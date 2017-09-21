@@ -1,0 +1,4 @@
+/src/.libs/*
+/src/*.o
+/src/main.cc
+!/src

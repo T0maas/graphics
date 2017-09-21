@@ -1,0 +1,9 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: graphics
+Description: graphics library for painting in ppm rgb file
+Libs: -lgraphics
+Cflags: -I/usr/local/include
