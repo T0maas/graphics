@@ -139,6 +139,17 @@ Triangle::Triangle(Loc loc1, Loc loc2, Loc loc3,Color col) {
 	TriColor.B = col.B;
 }
 
+Line::Line(Loc loc1, Loc loc2, Color _color) {
+	north = loc1.Y;
+	south = loc2.Y;
+	west = loc1.X;
+	east = loc2.X;
+
+	LineColor.R = _color.R;
+	LineColor.G = _color.G;
+	LineColor.B = _color.B;
+}
+
 void Canvas::AddObj(Triangle triangle) {
 	for (int h=0;h<height ;h++){
 		for (int w=0;w<width ;w++){
@@ -151,6 +162,20 @@ void Canvas::AddObj(Triangle triangle) {
 	}
 }
 
+void Canvas::AddObj(Line line) {
+	for (int h=0;h< height ;h++){
+		for (int w=0;w< width ;w++){
+			if (w >= line.west && w <=line.east && h >= line.north && h <= line.south ){
+				if (Canvas::isOnLine(Loc(line.west,line.north),Loc(line.east,line.south),Loc(w,h)))
+				{
+					imageR[h][w] = line.LineColor.R;
+					imageG[h][w] = line.LineColor.G;
+					imageB[h][w] = line.LineColor.B;
+				}
+			}
+		}
+	}
+}
 float Canvas::area(int x1, int y1, int x2, int y2, int x3, int y3){
 	return abs((x1*(y2-y3) + x2*(y3-y1)+ x3*(y1-y2))/2.0);
 }
@@ -173,3 +198,18 @@ bool Canvas::isInside(int x1, int y1, int x2, int y2, int x3, int y3, int x, int
    return (A == A1 + A2 + A3);
 }
 
+bool Canvas::isOnLine(Loc line1 ,Loc line2,Loc point)
+{
+	float y2 = line2.Y;
+	float y1 = line1.Y;
+	float x2 = line2.X;
+	float x1 = line1.X;
+	float x = point.X;
+	float y = point.Y;
+
+	float slope = (y2-y1)/(x2-x1);
+	if (abs(slope * (x - x1) - y) < 1.1)
+	    return true;
+	else
+	    return false;
+}

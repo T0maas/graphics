@@ -26,6 +26,14 @@ public:
 	Color(int _r, int _g, int _b);
 };
 
+class Line{
+public:
+	struct Colors{int R,G,B;} LineColor;
+	int north,west,south,east;
+
+	Line(Loc loc1,Loc loc2, Color _color);
+};
+
 class Circle{
 public:
 	struct Colors{int R,G,B;} CircleColor;
@@ -60,9 +68,10 @@ public:
 	void AddObj(Circle circle);
 	void AddObj(Rectangle rectangle);
 	void AddObj(Triangle triangle);
+	void AddObj(Line line);
 	float area(int x1, int y1, int x2, int y2, int x3, int y3);
 	bool isInside(int x1, int y1, int x2, int y2, int x3, int y3, int x, int y);
-
+	bool isOnLine(Loc line1, Loc line2, Loc point);
 };
 
 
