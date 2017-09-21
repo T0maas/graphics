@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([graphics], [VERSION], [BUG-REPORT-ADDRESS])
+AC_INIT([graphics], [0.1], [BUG-REPORT-ADDRESS])
 AC_CONFIG_HEADERS([config.h])
 AC_ENABLE_SHARED
 AM_INIT_AUTOMAKE

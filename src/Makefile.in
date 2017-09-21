@@ -341,6 +341,7 @@ top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = foreign
 lib_LTLIBRARIES = libgraphics.la
 libgraphics_la_SOURCES = graphics.cc graphics.h
+libgraphics_LDADD = libgraphics.a
 include_HEADERS = graphics.h
 all: all-am
 
