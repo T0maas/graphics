@@ -1,4 +1,6 @@
 /src/.libs/*
 /src/*.o
 /src/main.cc
+/src/*.lo
+/src/*.la
 !/src
